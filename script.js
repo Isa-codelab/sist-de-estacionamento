@@ -16,7 +16,7 @@
             row.innerHTML = `
             <td>${veiculo.nome}</td>
             <td>${veiculo.placa}</td>
-            <td>${veiculo.entrada}</td>
+            <td>${veiculo.entradaformatada}</td>
             <td>
                 <button class="delete" data-placa="${veiculo.placa}">X</button>
             </td>
@@ -30,7 +30,8 @@
         }
         function remover(placa) {
             const { entrada, nome } = ler().find((veiculo) => veiculo.placa === placa);
-            const time = calcTempo(new Date().getTime() - new Date(entrada).getTime());
+            const entradaDate = new Date(entrada);
+            const time = calcTempo(new Date().getTime() - entradaDate.getTime());
             if (!confirm(`O veiculo ${nome} permaneceu por ${time}. Deseja encerrar?`))
                 return;
             salvar(ler().filter(veiculo => veiculo.placa !== placa));
@@ -57,10 +58,21 @@
             alert('Os campos nome e placa sao obrigatorios');
             return;
         }
+        const dataFormatada = new Date().toLocaleString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+        const dataEntrada = new Date();
         Patio().adicionar({
             nome,
             placa,
-            entrada: new Date().toISOString()
+            entrada: dataEntrada.toISOString(),
+            entradaformatada: dataFormatada
         }, true);
+        $('#nome').value = '';
+        $('#placa').value = '';
     });
 })();
