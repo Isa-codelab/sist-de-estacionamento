@@ -4,30 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estacionamento</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <input type="text" id="nome" 
-    placeholder="Digite o nome do veículo" 
-    autocomplete="off"/>
 
-    <input type="text" id="placa" 
-    placeholder="Digite a placa do veículo"
-    autocomplete="off"/> 
+    <header>
+        <section class="header-container">
+            <h1>Sistema de Estacionamento</h1>
+            <p>Cadastre seu veículo!</p>
+        </section>
+    </header>
+    <main> 
+    <section class="cadastro-container">
+        <input type="text" id="nome" 
+        placeholder="Digite o nome do veículo" 
+        autocomplete="off"/>
 
-    <button id="cadastrar">Cadastrar</button>
+        <input type="text" id="placa" 
+        placeholder="Digite a placa do veículo"
+        autocomplete="off"/> 
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Placa</th>
-                <th>Entrada</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody id="patio"></tbody>
-    </table>
-
+        <button id="cadastrar">Cadastrar</button>
+    </section>
+   
+    <section>
+        <table class="table-container">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Placa</th>
+                    <th>Entrada</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="patio"></tbody>
+        </table>
+    </section>
+    </main>
     <script src="script.js"></script>
     
 </body>
